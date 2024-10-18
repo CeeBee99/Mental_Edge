@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfhni0pl557qx"]
+
+[ext_resource type="Script" path="res://Area2D.gd" id="1_h20lk"]
+[ext_resource type="Script" path="res://CollisionShape2D.gd" id="2_dc00j"]
+[ext_resource type="Script" path="res://RayCast2D.gd" id="3_qf6kj"]
+[ext_resource type="Script" path="res://CombatController.gd" id="4_s2g6s"]
+
+[node name="Combat_Scene" type="Node2D"]
+
+[node name="Player" type="Area2D" parent="."]
+script = ExtResource("1_h20lk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+script = ExtResource("2_dc00j")
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+script = ExtResource("3_qf6kj")
+
+[node name="CombatController" type="Node2D" parent="."]
+script = ExtResource("4_s2g6s")
