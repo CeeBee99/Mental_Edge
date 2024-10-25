@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtkid5qgsecqh"]
+
+[ext_resource type="Texture2D" uid="uid://bb1gahehmqeby" path="res://icon.svg" id="1_5d7rl"]
+[ext_resource type="Script" path="res://Larry.gd" id="1_6hxym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hdps"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Movement" type="Area2D" parent="."]
+script = ExtResource("1_6hxym")
+
+[node name="Sprite2D" type="Sprite2D" parent="Movement"]
+texture = ExtResource("1_5d7rl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Movement"]
+shape = SubResource("CircleShape2D_2hdps")
