@@ -1,10 +1,7 @@
-extends CollisionShape2D
+extends "res://PlayerMovement.gd"
 
-
-onready var ray = $RayCast2D
-
-func move(dir):
-	ray.target_position = inputs[dir] * tile_size
-	ray.force_raycast_update()
-	if !ray.is_colliding():
+func move_player(dir):
+	if dir in inputs:
 		position += inputs[dir] * tile_size
+	else:
+		print("Invalid direction:", dir)

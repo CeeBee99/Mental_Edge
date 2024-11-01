@@ -1,22 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfhni0pl557qx"]
+[gd_scene load_steps=8 format=3 uid="uid://bfhni0pl557qx"]
 
-[ext_resource type="Script" path="res://Area2D.gd" id="1_h20lk"]
-[ext_resource type="Script" path="res://CollisionShape2D.gd" id="2_dc00j"]
-[ext_resource type="Script" path="res://RayCast2D.gd" id="3_qf6kj"]
-[ext_resource type="Script" path="res://CombatController.gd" id="4_s2g6s"]
+[ext_resource type="Script" path="res://Movement.gd" id="1_is6or"]
+[ext_resource type="Script" path="res://Collisions.gd" id="3_d6yax"]
+[ext_resource type="Script" path="res://Player_Stats.gd" id="4_r8fbb"]
+[ext_resource type="Texture2D" uid="uid://bvwpbx77vvpcu" path="res://BPD_Businessman (1).png" id="6_1y181"]
+[ext_resource type="Texture2D" uid="uid://cv240vicahyp2" path="res://Player_Battle_Sprite (1).png" id="6_4rrho"]
+[ext_resource type="Script" path="res://Action.gd" id="6_k6a56"]
+[ext_resource type="Texture2D" uid="uid://jrp7ha1bmheh" path="res://actual_grid.png" id="7_d1tqh"]
 
 [node name="Combat_Scene" type="Node2D"]
+position = Vector2(71, -162)
 
-[node name="Player" type="Area2D" parent="."]
-script = ExtResource("1_h20lk")
+[node name="City_Background" type="Sprite2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Battlegrid" type="Sprite2D" parent="City_Background"]
+position = Vector2(-71, 161)
+scale = Vector2(1.72619, 2.44926)
+texture = ExtResource("7_d1tqh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-script = ExtResource("2_dc00j")
+[node name="CombatMovement" type="Area2D" parent="."]
+position = Vector2(77, 280)
+script = ExtResource("1_is6or")
 
-[node name="RayCast2D" type="RayCast2D" parent="Player"]
-script = ExtResource("3_qf6kj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatMovement"]
+script = ExtResource("3_d6yax")
+
+[node name="RayCollisionDetection" type="RayCast2D" parent="CombatMovement"]
+position = Vector2(93, -273)
+
+[node name="Player" type="CharacterBody2D" parent="CombatMovement"]
+position = Vector2(-203, -323)
+script = ExtResource("4_r8fbb")
+
+[node name="Larry" type="Sprite2D" parent="CombatMovement/Player"]
+position = Vector2(2, 86)
+texture = ExtResource("6_4rrho")
+
+[node name="Enemy" type="CharacterBody2D" parent="CombatMovement"]
+position = Vector2(-461, -235)
+
+[node name="BPD Businessman" type="Sprite2D" parent="CombatMovement/Enemy"]
+position = Vector2(508, -59)
+scale = Vector2(0.463235, 0.366568)
+texture = ExtResource("6_1y181")
 
 [node name="CombatController" type="Node2D" parent="."]
-script = ExtResource("4_s2g6s")
+position = Vector2(-499, -171)
+script = ExtResource("6_k6a56")
